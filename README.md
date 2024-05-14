@@ -1,23 +1,23 @@
-# PROJECT NAME
-
-Project description goes here.
+# Todo-App
 
 ## Getting Started
 
 ### Requirements
 
-For development, you will only need [Node](http://nodejs.org/) installed in your environment.
-Please use the appropriate [Editorconfig](http://editorconfig.org/) plugin for your Editor (not mandatory).
+For development, you will only need [Node](http://nodejs.org/) installed in your
+environment.
+Please use the appropriate [Editorconfig](http://editorconfig.org/) plugin for your
+Editor (not mandatory).
 
 ### Install
 
-    git clone https://github.com/ORG/PROJECT.git
+    git clone git@github.com:Arvoya/todo-app.git
     cd PROJECT
     npm install
 
 ### Configure app
 
-Any environment configuration steps.
+<!-- Any environment configuration steps. -->
 
 ### Start & watch
 
@@ -26,17 +26,51 @@ Any environment configuration steps.
 
 ## Architecture
 
-Describe how the project is structured.
+![](public/Screenshot 2024-05-13 at 2.01.16 PM.png)
+
+    ```bash
+    ├── .eslintrc.cjs
+    ├── .gitignore
+    ├── README.md
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    ├── public
+    │   ├── Screenshot 2024-05-13 at 2.01.16 PM.png
+    │   └── vite.svg
+    ├── src
+    │   ├── App.tsx
+    │   ├── Components
+    │   │   ├── Footer
+    │   │   │   └── index.tsx
+    │   │   ├── Header
+    │   │   │   └── index.tsx
+    │   │   ├── List
+    │   │   │   └── index.tsx
+    │   │   └── Todo
+    │   │       ├── Todo.test.jsx
+    │   │       └── index.tsx
+    │   ├── Context
+    │   │   └── Settings
+    │   │       ├── Settings.test.tsx
+    │   │       └── index.tsx
+    │   ├── hooks
+    │   │   ├── form.js
+    │   │   └── styles.js
+    │   └── main.jsx
+    ├── tsconfig.json
+    ├── tsconfig.node.json
+    └── vite.config.ts
+    ```
 
 ### Languages & tools
 
-Explain what tools are used.
+<!-- Explain what tools are used. -->
 
 ## Change Log
 
-List versioned releases.
+1.0.0
 
 ## Collaborators
 
-**Isai Chaidez**
-# todo-app
+Brock Britton
