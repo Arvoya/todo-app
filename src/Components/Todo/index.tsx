@@ -5,18 +5,19 @@ import { TodoContext, TodoData } from '../../Context/Settings';
 
 
 const Todo = () => {
-  const todoState = useContext<{ addItem: () => void, totalItems: Array<TodoData>, toggleComplete: () => void, pageItems: number }>(TodoContext)
+  const todoState = useContext<{ addItem: () => void, totalItems: Array<TodoData>, toggleComplete: () => void, pageItems: () => void }>(TodoContext)
   const [defaultValues] = useState({
     difficulty: 4,
   });
-  const [incomplete, setIncomplete] = useState([]);
+  const [incomplete, setIncomplete] = useState<number>(0);
   const { handleChange, handleSubmit } = useForm(todoState.addItem, defaultValues);
 
   useEffect(() => {
     const incompleteCount = todoState.totalItems.filter(item => !item.completed).length;
+    console.log('this is incomplete', incompleteCount);
     setIncomplete(incompleteCount);
     document.title = `To Do List: ${incomplete}`;
-  }, [todoState.totalItems]);
+  }, [todoState.totalItems, incomplete]);
 
   return (
     <>
