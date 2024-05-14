@@ -1,50 +1,22 @@
-import React, { useEffect, useState, useContext } from 'react';
-import useForm from '../../hooks/form';
+import { useEffect, useState, useContext } from 'react';
+import useForm from '../../hooks/form.js';
 import { TodoContext, TodoData } from '../../Context/Settings';
 
 
 
 const Todo = () => {
-  const todoState = useContext<{addItem: () => void, totalItems: Array<TodoData>, toggleComplete: () => void, pageItems: number}>(TodoContext)
+  const todoState = useContext<{ addItem: () => void, totalItems: Array<TodoData>, toggleComplete: () => void, pageItems: number }>(TodoContext)
   const [defaultValues] = useState({
     difficulty: 4,
   });
   const [incomplete, setIncomplete] = useState([]);
   const { handleChange, handleSubmit } = useForm(todoState.addItem, defaultValues);
 
-  // function addItem(item) {
-  //   item.id = uuid();
-  //   item.complete = false;
-  //   console.log(item);
-  //   setList([...list, item]);
-  // }
-
-  // function deleteItem(id) {
-  //   const items = list.filter( item => item.id !== id );
-  //   setList(items);
-  // }
-
-  // function toggleComplete(id) {
-
-  //   const items = list.map( item => {
-  //     if ( item.id === id ) {
-  //       item.completed = ! item.completed;
-  //     }
-  //     return item;
-  //   });
-
-  //   setList(items);
-
-  // }
-
   useEffect(() => {
     const incompleteCount = todoState.totalItems.filter(item => !item.completed).length;
     setIncomplete(incompleteCount);
     document.title = `To Do List: ${incomplete}`;
-    // linter will want 'incomplete' added to dependency array unnecessarily. 
-    // disable code used to avoid linter warning 
-    // eslint-disable-next-line react-hooks/exhaustive-deps 
-  }, [todoState.totalItems]);  
+  }, [todoState.totalItems]);
 
   return (
     <>
@@ -81,7 +53,7 @@ const Todo = () => {
           <p>{item.text}</p>
           <p><small>Assigned to: {item.assignee}</small></p>
           <p><small>Difficulty: {item.difficulty}</small></p>
-          <div onClick={() => toggleComplete(item.id)}>Complete: {item.completed.toString()}</div>
+          <div onClick={() => todoState.toggleComplete(item.id)}>Complete: {item.completed.toString()}</div>
           <hr />
         </div>
       ))}
