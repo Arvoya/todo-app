@@ -28,40 +28,43 @@ Editor (not mandatory).
 
 ![](public/Screenshot 2024-05-13 at 2.01.16 PM.png)
 
-    ```bash
-    ├── .eslintrc.cjs
-    ├── .gitignore
-    ├── README.md
-    ├── index.html
-    ├── package-lock.json
-    ├── package.json
-    ├── public
-    │   ├── Screenshot 2024-05-13 at 2.01.16 PM.png
-    │   └── vite.svg
-    ├── src
-    │   ├── App.tsx
-    │   ├── Components
-    │   │   ├── Footer
-    │   │   │   └── index.tsx
-    │   │   ├── Header
-    │   │   │   └── index.tsx
-    │   │   ├── List
-    │   │   │   └── index.tsx
-    │   │   └── Todo
-    │   │       ├── Todo.test.jsx
-    │   │       └── index.tsx
-    │   ├── Context
-    │   │   └── Settings
-    │   │       ├── Settings.test.tsx
-    │   │       └── index.tsx
-    │   ├── hooks
-    │   │   ├── form.js
-    │   │   └── styles.js
-    │   └── main.jsx
-    ├── tsconfig.json
-    ├── tsconfig.node.json
-    └── vite.config.ts
-    ```
+```text
+├── .eslintrc.cjs
+├── .gitignore
+├── README.md
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+│   └── Screenshot 2024-05-13 at 2.01.16 PM.png
+├── src
+│   ├── App.tsx
+│   ├── Components
+│   │   ├── Footer
+│   │   │   └── index.tsx
+│   │   ├── Header
+│   │   │   └── index.tsx
+│   │   ├── List
+│   │   │   └── index.tsx
+│   │   ├── Settings
+│   │   │   └── index.tsx
+│   │   └── Todo
+│   │       ├── Todo.test.jsx
+│   │       └── index.tsx
+│   ├── Context
+│   │   ├── Items
+│   │   │   └── index.tsx
+│   │   └── Settings
+│   │       ├── Settings.test.tsx
+│   │       └── index.tsx
+│   ├── hooks
+│   │   ├── form.js
+│   │   └── styles.js
+│   └── main.jsx
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
 
 ### Languages & tools
 

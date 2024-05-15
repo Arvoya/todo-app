@@ -1,29 +1,19 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import useForm from '../../hooks/form.js';
-import { TodoContext, TodoData } from '../../Context/Settings';
-
+import { ItemsContext, ItemData } from '../../Context/Items';
+import List from '../List/index.js';
 
 
 const Todo = () => {
-  const todoState = useContext<{ addItem: () => void, totalItems: Array<TodoData>, toggleComplete: () => void, pageItems: () => void }>(TodoContext)
+  const ItemsState = useContext<{ totalItems: Array<ItemData>, addItem: (item: ItemData) => void, toggleComplete: (id: string) => void }>(ItemsContext)
   const [defaultValues] = useState({
     difficulty: 4,
   });
-  const [incomplete, setIncomplete] = useState<number>(0);
-  const { handleChange, handleSubmit } = useForm(todoState.addItem, defaultValues);
+  const { handleChange, handleSubmit } = useForm(ItemsState.addItem, defaultValues);
 
-  useEffect(() => {
-    const incompleteCount = todoState.totalItems.filter(item => !item.completed).length;
-    console.log('this is incomplete', incompleteCount);
-    setIncomplete(incompleteCount);
-    document.title = `To Do List: ${incomplete}`;
-  }, [todoState.totalItems, incomplete]);
 
   return (
     <>
-      <header data-testid="todo-header">
-        <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
-      </header>
 
       <form onSubmit={handleSubmit}>
 
@@ -48,16 +38,7 @@ const Todo = () => {
           <button type="submit">Add Item</button>
         </label>
       </form>
-
-      {todoState.totalItems.map(item => (
-        <div key={item.id}>
-          <p>{item.text}</p>
-          <p><small>Assigned to: {item.assignee}</small></p>
-          <p><small>Difficulty: {item.difficulty}</small></p>
-          <div onClick={() => todoState.toggleComplete(item.id)}>Complete: {item.completed.toString()}</div>
-          <hr />
-        </div>
-      ))}
+      <List items={ItemsState.totalItems} toggleComplete={ItemsState.toggleComplete} />
 
     </>
   );
