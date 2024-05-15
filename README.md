@@ -26,7 +26,7 @@ Editor (not mandatory).
 
 ## Architecture
 
-![](public/Screenshot 2024-05-13 at 2.01.16 PM.png)
+![uml](./public/uml.png)
 
 ```text
 ├── .eslintrc.cjs
@@ -36,7 +36,7 @@ Editor (not mandatory).
 ├── package-lock.json
 ├── package.json
 ├── public
-│   └── Screenshot 2024-05-13 at 2.01.16 PM.png
+│   └── uml.png
 ├── src
 │   ├── App.tsx
 │   ├── Components
