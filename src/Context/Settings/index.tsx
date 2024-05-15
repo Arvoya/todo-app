@@ -1,15 +1,7 @@
 import React, { createContext, useState } from "react";
-import { v4 as uuid } from 'uuid';
 
-export const TodoContext = createContext({});
+export const SettingsContext = createContext({});
 
-export type TodoData = {
-    id: string,
-    text: string,
-    assignee: string,
-    difficulty: string,
-    completed: boolean
-}
 
 interface childrenType {
     children: React.ReactElement;
@@ -18,31 +10,24 @@ interface childrenType {
 export default function TodoProvider({ children }: childrenType) {
 
     const [pageItems, setPageItems] = useState(3);
-    const [totalItems, setTotalItems] = useState<Array<TodoData>>([{ id: "me123456789", text: "eat", assignee: "brock", difficulty: "5", completed: false }])
+    const [sort, setSort] = useState('difficulty');
+    const [hideCompleted, setCompleted] = useState(true);
 
-    function addItem(item: TodoData) {
-        item.id = uuid();
-        item.completed = false;
-        console.log(item);
-        setTotalItems([...totalItems, item]);
+    const changePageItemLength = (length: number) => {
+        setPageItems(length);
     }
 
-    function toggleComplete(id: string) {
+    const changeSort = (sortWord: string) => {
+        setSort(sortWord);
+    }
 
-        const items = totalItems.map(item => {
-            if (item.id === id) {
-                item.completed = !item.completed;
-            }
-            return item;
-        });
-
-        setTotalItems(items);
-
+    const changeHideCompleted = (boolean: boolean) => {
+        setCompleted(!boolean);
     }
 
     return (
-        <TodoContext.Provider value={{ pageItems, totalItems, addItem, toggleComplete }}>
+        <SettingsContext.Provider value={{ pageItems, changePageItemLength, sort, changeSort, hideCompleted, changeHideCompleted }}>
             {children}
-        </TodoContext.Provider>
+        </SettingsContext.Provider>
     )
 }
