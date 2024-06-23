@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import Auth from '../../Components/Auth';
 import { SettingsContext } from '../../Context/Settings';
 
 function Settings() {
@@ -21,28 +22,31 @@ function Settings() {
   };
 
   return (
-    <form>
-      <h2>Settings</h2>
-      {alert && <div>{alert}</div>}
-      <label>
-        <p>Items Per Page</p>
-        <input type="number" value={pageItems} onChange={(e) => handleChangePageItemLength(parseInt(e.target.value))} />
-      </label>
-      <label>
-        <p>Sort By</p>
-        <select value={sort} onChange={(e) => handleChangeSort(e.target.value)}>
-          <option value="difficulty">Difficulty</option>
-          <option value="assignee">Assignee</option>
-          <option value="text">Text</option>
-        </select>
-      </label>
-      <br />
-      <br />
-      <label>
-        <span>Hide Completed</span>
-        <input type="checkbox" checked={!hideCompleted} onChange={(e) => handleChangeHideCompleted(e.target.checked)} />
-      </label>
-    </form>
+
+    <Auth capability="update">
+      <form>
+        <h2>Settings</h2>
+        {alert && <div>{alert}</div>}
+        <label>
+          <p>Items Per Page</p>
+          <input type="number" value={pageItems} onChange={(e) => handleChangePageItemLength(parseInt(e.target.value))} />
+        </label>
+        <label>
+          <p>Sort By</p>
+          <select value={sort} onChange={(e) => handleChangeSort(e.target.value)}>
+            <option value="difficulty">Difficulty</option>
+            <option value="assignee">Assignee</option>
+            <option value="text">Text</option>
+          </select>
+        </label>
+        <br />
+        <br />
+        <label>
+          <span>Hide Completed</span>
+          <input type="checkbox" checked={!hideCompleted} onChange={(e) => handleChangeHideCompleted(e.target.checked)} />
+        </label>
+      </form>
+    </Auth>
   );
 }
 

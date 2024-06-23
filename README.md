@@ -29,6 +29,7 @@ Editor (not mandatory).
 ![uml](./public/uml.png)
 
 ```text
+├── .DS_Store
 ├── .eslintrc.cjs
 ├── .gitignore
 ├── README.md
@@ -36,15 +37,21 @@ Editor (not mandatory).
 ├── package-lock.json
 ├── package.json
 ├── public
+│   ├── .DS_Store
 │   └── uml.png
 ├── src
 │   ├── App.tsx
 │   ├── Components
+│   │   ├── Auth
+│   │   │   └── index.tsx
 │   │   ├── Footer
 │   │   │   └── index.tsx
 │   │   ├── Header
 │   │   │   └── index.tsx
 │   │   ├── List
+│   │   │   └── index.tsx
+│   │   ├── Login
+│   │   │   ├── FloatingLabelInput.module.css
 │   │   │   └── index.tsx
 │   │   ├── Settings
 │   │   │   └── index.tsx
@@ -52,6 +59,8 @@ Editor (not mandatory).
 │   │       ├── Todo.test.jsx
 │   │       └── index.tsx
 │   ├── Context
+│   │   ├── Auth
+│   │   │   └── index.tsx
 │   │   ├── Items
 │   │   │   └── index.tsx
 │   │   └── Settings
@@ -65,10 +74,6 @@ Editor (not mandatory).
 ├── tsconfig.node.json
 └── vite.config.ts
 ```
-
-### Languages & tools
-
-<!-- Explain what tools are used. -->
 
 ## Change Log
 
