@@ -17,7 +17,7 @@ interface childrenType {
 
 export default function ItemsProvider({ children }: childrenType) {
 
-  const [totalItems, setTotalItems] = useState<Array<ItemData>>([{ id: "me123456789", text: "eat", assignee: "brock", difficulty: "5", completed: false }])
+  const [totalItems, setTotalItems] = useState<Array<ItemData>>([])
 
   function addItem(item: ItemData) {
     item.id = uuid();

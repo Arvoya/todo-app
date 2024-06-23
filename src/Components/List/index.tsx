@@ -1,6 +1,7 @@
 import { Pagination } from '@mantine/core';
 import { SettingsContext } from '../../Context/Settings';
-import { useState, useContext } from 'react';
+import { ItemData } from '../../Context/Items';
+import { useState, useContext, useEffect } from 'react';
 
 interface PaginationProps {
   items: Array<ItemData>;
@@ -8,12 +9,12 @@ interface PaginationProps {
 }
 
 function List({ items, toggleComplete }: PaginationProps) {
-  const { pageItems, hideCompleted, sort } = useContext<{ pageItems: number }>(SettingsContext);
+  const { pageItems, hideCompleted, sort } = useContext<{ pageItems: number, hideCompleted: boolean, sort: string }>(SettingsContext);
   const itemsPerPage = pageItems;
   const [currentPageIncomplete, setCurrentPageIncomplete] = useState(1);
   const [currentPageComplete, setCurrentPageComplete] = useState(1);
 
-  const completedItems = items.filter(item => item.completed).sort((a, b) => (a[sort] > b[sort]) ? 1 : -1);
+  const completedItems = items.filter((item) => item.completed).sort((a, b) => (a[sort] > b[sort]) ? 1 : -1);
   const incompleteItems = items.filter(item => !item.completed).sort((a, b) => (a[sort] > b[sort]) ? 1 : -1);
 
   const totalPagesIncomplete = Math.ceil(incompleteItems.length / itemsPerPage);
@@ -29,6 +30,13 @@ function List({ items, toggleComplete }: PaginationProps) {
 
   const handlePageChangeIncomplete = (page: number) => setCurrentPageIncomplete(page);
   const handlePageChangeComplete = (page: number) => setCurrentPageComplete(page);
+
+  useEffect(() => {
+    setCurrentPageIncomplete(1);
+    setCurrentPageComplete(1);
+  }, [pageItems, hideCompleted, sort]);
+
+
 
   return (
     <>
